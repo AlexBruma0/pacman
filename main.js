@@ -1,10 +1,12 @@
 var canvas;
 var gl;
 
-var program
+var program1
+var program2
 var height = 0.0;
 var width = 0.0;
-var vBuffer;
+var vBuffer1;
+var vBuffer2;
 var heightLoc;
 var widthLoc;
 
@@ -35,19 +37,30 @@ function getKey(key) {
 	}
 }
 
-var vertices = [
+var vertices1 = [
 	vec2( -0.8, 0.8),
-
 	vec2(  .8, 0.8),
-
 	vec2(  .8, -0.8 ),
 
 
 
 	vec2( -0.8, 0.8),
 	vec2(  0.8, -0.8 ),
-    
 	vec2( -0.8, -0.8 ),
+
+
+];
+
+var vertices2 = [
+	vec2( -0.7, 0.7),
+	vec2(  .7, 0.7),
+	vec2(  .7, -0.7 ),
+
+
+
+	vec2( -0.7, 0.7),
+	vec2(  0.7, -0.7 ),
+	vec2( -0.7, -0.7 ),
 
 
 ];
@@ -63,23 +76,31 @@ window.onload = function init() {
 	gl.clearColor( 0.5, 0.5, 0.5, 1.0 );
 
 
-    program = initShaders( gl, "vertex-shader", "fragment-shader" );
-	gl.useProgram( program );
+    program1 = initShaders( gl, "vertex-shader1", "fragment-shader1" );
+	gl.useProgram( program1 );
+	vBuffer1 = gl.createBuffer();
+	gl.bindBuffer(gl.ARRAY_BUFFER, vBuffer1);
+    gl.bufferData( gl.ARRAY_BUFFER, flatten(vertices1), gl.STATIC_DRAW );
+	var vPosition1 = gl.getAttribLocation( program1, "vPosition" );
+	gl.vertexAttribPointer( vPosition1, 2, gl.FLOAT, false, 0, 0 );
+	gl.enableVertexAttribArray( vPosition1 );   
+	heightLoc = gl.getUniformLocation(program1, "height");
+	widthLoc = gl.getUniformLocation(program1, "width");
+    gl.clear( gl.COLOR_BUFFER_BIT ); 
+	gl.drawArrays( gl.TRIANGLES, 0, 6 );
 
-	vBuffer = gl.createBuffer();
 
-	gl.bindBuffer(gl.ARRAY_BUFFER, vBuffer);
-    gl.bufferData( gl.ARRAY_BUFFER, flatten(vertices), gl.STATIC_DRAW );
-      
-
-	var vPosition = gl.getAttribLocation( program, "vPosition" );
-	gl.vertexAttribPointer( vPosition, 2, gl.FLOAT, false, 0, 0 );
-	gl.enableVertexAttribArray( vPosition );   
-    
-	heightLoc = gl.getUniformLocation(program, "height");
-	widthLoc = gl.getUniformLocation(program, "width");
+    program2 = initShaders( gl, "vertex-shader2", "fragment-shader2" );
+	gl.useProgram( program2 );
+	vBuffer2 = gl.createBuffer();
+	gl.bindBuffer(gl.ARRAY_BUFFER, vBuffer2);
+    gl.bufferData( gl.ARRAY_BUFFER, flatten(vertices2), gl.STATIC_DRAW );
+	var vPosition2 = gl.getAttribLocation( program2, "vPosition" );
+	gl.vertexAttribPointer( vPosition2, 2, gl.FLOAT, false, 0, 0 );
+	gl.enableVertexAttribArray( vPosition2 ); 
+    //gl.clear( gl.COLOR_BUFFER_BIT ); 
+	gl.drawArrays( gl.TRIANGLES, 0, 6 );
 	
-	render();
 }
 
 function render() {
