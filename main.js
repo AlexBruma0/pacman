@@ -36,13 +36,22 @@ function getKey(key) {
 }
 
 var vertices = [
-	vec2( -0.05, 0.95),
-	vec2(  0.05, 0.95),
-	vec2(  0.05, 0.85 ),
-	vec2( -0.05, 0.95),
-	vec2(  0.05, 0.85 ),
-	vec2( -0.05, 0.85 )
+	vec2( -0.8, 0.8),
+
+	vec2(  .8, 0.8),
+
+	vec2(  .8, -0.8 ),
+
+
+
+	vec2( -0.8, 0.8),
+	vec2(  0.8, -0.8 ),
+    
+	vec2( -0.8, -0.8 ),
+
+
 ];
+
 
 window.onload = function init() {
 
@@ -51,7 +60,8 @@ window.onload = function init() {
     gl = WebGLUtils.setupWebGL( canvas );
     if ( !gl ) { alert( "WebGL isn't available" ); }
 	gl.viewport( 0, 0, canvas.width, canvas.height );
-	gl.clearColor( 0.0, 0.0, 0.0, 1.0 );
+	gl.clearColor( 0.5, 0.5, 0.5, 1.0 );
+
 
     program = initShaders( gl, "vertex-shader", "fragment-shader" );
 	gl.useProgram( program );
@@ -59,7 +69,8 @@ window.onload = function init() {
 	vBuffer = gl.createBuffer();
 
 	gl.bindBuffer(gl.ARRAY_BUFFER, vBuffer);
-	gl.bufferData( gl.ARRAY_BUFFER, flatten(vertices), gl.STATIC_DRAW );   
+    gl.bufferData( gl.ARRAY_BUFFER, flatten(vertices), gl.STATIC_DRAW );
+      
 
 	var vPosition = gl.getAttribLocation( program, "vPosition" );
 	gl.vertexAttribPointer( vPosition, 2, gl.FLOAT, false, 0, 0 );
@@ -85,7 +96,6 @@ function render() {
 	if (width > -0.9 && pressed == 4)
 		width = width - 0.01;	
 	
-	console.log(height);
 	document.getElementById("debug").innerHTML = height;
 	document.getElementById("width").innerHTML = width;
 	gl.uniform1f(heightLoc, height);
