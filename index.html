@@ -4,13 +4,13 @@
   <div>width: <span id="width"></span></div>
 
   <script id="vertex-shader1" type="x-shader/x-vertex">
-    attribute vec4 vPosition;
+    attribute vec4 vPosition1;
     uniform float height;
     uniform float width;
     void
     main()
     {
-        gl_Position = vPosition + vec4(width, height, 0, 0)  ;
+        gl_Position = vPosition1 + vec4(width, height, 0, 0)  ;
     }
   </script>
 
@@ -26,11 +26,11 @@
   </script>
 
   <script id="vertex-shader2" type="x-shader/x-vertex">
-    attribute vec4 vPosition;
+    attribute vec4 vPosition2;
     void
     main()
     {
-        gl_Position = vPosition   ;
+        gl_Position = vPosition2   ;
     }
   </script>
 
