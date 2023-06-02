@@ -2,20 +2,7 @@
 // 1 dot available
 // 2 dot eaten
 // 3 pacman position
-// const state = [
-//     [0,0,0,0,0,0,0,0,0,0,0],
-//     [0,1,1,1,1,1,1,1,1,1,0],
-//     [0,1,0,0,0,1,0,0,0,1,0],
-//     [0,1,0,0,0,1,0,0,0,1,0],
-//     [0,1,1,1,1,1,1,1,1,1,0],
-//     [0,1,0,1,1,0,1,1,0,1,0],
-//     [0,1,0,1,1,0,1,1,0,1,0],
-//     [0,1,1,1,1,1,1,1,1,1,0],
-//     [0,1,0,0,0,1,0,0,0,1,0],
-//     [0,1,0,0,0,1,0,0,0,1,0],
-//     [0,1,1,1,1,3,1,1,1,1,0],  
-//     [0,0,0,0,0,0,0,0,0,0,0],
-// ]
+
 const state = [
     1,1,1,1,1,1,1,1,1,
     1,0,0,0,1,0,0,0,1,
@@ -28,33 +15,37 @@ const state = [
     1,0,0,0,1,0,0,0,1,
     1,1,1,1,3,1,1,1,1,
 ]
-const yunit = 1/6
-const xunit = yunit * (10/9)
 
 const gameLogic = () => {
-    drawState(state)
-    // if (pressed === 'down'){
-    //     xtriangle = xtriangle - marg;
-    //     pressed = null
-    // }
-    // if (pressed === 'up'){
-    //     xtriangle = xtriangle + marg;	
-    //     pressed = null
-    // }
-    // if (pressed === 'right'){
-    //     ytriangle = ytriangle + marg;
-    //     pressed = null
-    // }   
-    // if (pressed === 'left'){
-    //     ytriangle = ytriangle - marg;	
-    //     pressed = null
-    // }
-    // triangle(0,0)
+    var sourceIndex = state.findIndex(element => element === 3)
+    if (pressed === 'down'){
+        requestStateChange(sourceIndex,sourceIndex + numCols)
+        pressed = null
+    }
+    if (pressed === 'up'){
+        requestStateChange(sourceIndex,sourceIndex - numCols)
+        pressed = null
+    }
+    if (pressed === 'right' && (sourceIndex+1)%numCols != 0){
+        requestStateChange(sourceIndex,sourceIndex + 1)
+        pressed = null
+    }   
+    if (pressed === 'left'&& sourceIndex%numCols != 0){
+        requestStateChange(sourceIndex,sourceIndex - 1)
+        pressed = null
+    }
+    window.onload = drawState(state)
+    
 }
 
-const requestStateChange = (sourceCol,sourceRow,destCol,destRow) => {
-    if (state[destCol][destRow] === 1){
-        state[sourceCol][sourceRow] = 0;
-        state[destCol][destRow] = 3
+const requestStateChange = (sourceIndex, destIndex) => {
+    if (state[destIndex] === 1){
+        state[sourceIndex] = 2;
+        state[destIndex] = 3
     }
+    if (state[destIndex] === 2){
+        state[sourceIndex] = 2;
+        state[destIndex] = 3
+    }
+    drawState(state)
 }
