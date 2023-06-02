@@ -10,8 +10,7 @@ const cos = (x) => {
 }
 const circle = (x,y) =>{
 
-    x = 0.5
-    y = 0.5
+    
     vertices =  pushVert(numVert, x,y)
     gl.useProgram( program1 );
     vBuffer1 = gl.createBuffer();
