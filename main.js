@@ -21,7 +21,7 @@ const render = () => {
 
     drawRectangels()
    
-    //triangle()
+    circle()
 
 	window.requestAnimationFrame(render);
 }
