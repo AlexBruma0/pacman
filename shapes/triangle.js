@@ -1,15 +1,16 @@
-var program1
 var vBuffer1;
 var heightLoc;
 var widthLoc;
 var height = 0.0;
 var width = 0.0;
+const marg = 1/6
+var l = marg * (8/10)
 
 const triangle = () => {
     var vertices1 = [
-        vec2( -0.8, 0.1),
-        vec2(  .0, 0.1),
-        vec2(  -.8, -0.8 ),
+        vec2( -l/2, -1 + marg + 0.03),
+        vec2(  l/2, -1 + marg + 0.03),
+        vec2(  0, -1 + marg +l+ 0.01),
     ];
 
     if (height > -1.8 && pressed == 1)
@@ -25,15 +26,15 @@ const triangle = () => {
         width = width - 0.01;	
 
 
-    gl.useProgram( program1 );
+    gl.useProgram( program2 );
     vBuffer1 = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, vBuffer1);
     gl.bufferData( gl.ARRAY_BUFFER, flatten(vertices1), gl.STATIC_DRAW );
-    var vPosition1 = gl.getAttribLocation( program1, "vPosition1" );
+    var vPosition1 = gl.getAttribLocation( program2, "vPosition1" );
     gl.vertexAttribPointer( vPosition1, 2, gl.FLOAT, false, 0, 0 );
     gl.enableVertexAttribArray( vPosition1 );   
-    heightLoc = gl.getUniformLocation(program1, "height");
-    widthLoc = gl.getUniformLocation(program1, "width");
+    heightLoc = gl.getUniformLocation(program2, "height");
+    widthLoc = gl.getUniformLocation(program2, "width");
     gl.drawArrays( gl.TRIANGLES, 0, 3 );
     gl.uniform1f(heightLoc, height);
     gl.uniform1f(widthLoc, width);
