@@ -1,29 +1,22 @@
 var vBuffer1;
 var heightLoc;
 var widthLoc;
-var height = 0.0;
-var width = 0.0;
+var xtriangle = 0.0;
+var ytriangle = 0.0;
 const marg = 1/6
-var l = marg * (8/10)
+const triangleLength = marg * (8/10)
+const padding = 0.07
 
-const triangle = () => {
+
+const triangle = (x,y) => {
+
+
     var vertices1 = [
-        vec2( -l/2, -1 + marg + 0.03),
-        vec2(  l/2, -1 + marg + 0.03),
-        vec2(  0, -1 + marg +l+ 0.01),
+        vec2( -triangleLength/2 + x, y - padding  ),
+        vec2(  triangleLength/2 + x, y - padding  ),
+        vec2(  x, y + triangleLength - padding ),
     ];
 
-    if (height > -1.8 && pressed == 1)
-    height = height - 0.01;
-
-    if (height < 0 && pressed == 2)
-        height = height + 0.01;	
-
-    if (width < 0.9 && pressed == 3)
-        width = width + 0.01;
-
-    if (width > -0.9 && pressed == 4)
-        width = width - 0.01;	
 
 
     gl.useProgram( program2 );
@@ -36,6 +29,6 @@ const triangle = () => {
     heightLoc = gl.getUniformLocation(program2, "height");
     widthLoc = gl.getUniformLocation(program2, "width");
     gl.drawArrays( gl.TRIANGLES, 0, 3 );
-    gl.uniform1f(heightLoc, height);
-    gl.uniform1f(widthLoc, width);
+    gl.uniform1f(heightLoc, xtriangle);
+    gl.uniform1f(widthLoc, ytriangle);
 }

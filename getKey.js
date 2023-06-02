@@ -2,20 +2,20 @@ const getKey = () => {
     const getKey = (key) => {
         switch(key.key){
             case "ArrowDown": 
-                pressed = 1;
+                pressed = 'down';
             break
     
             case "ArrowUp": 
-                pressed = 2;
+                pressed = 'up';
             break
             case "ArrowRight": 
-                pressed = 3;
+                pressed = 'right';
             break
             case "ArrowLeft": 
-                pressed = 4;
+                pressed = 'left';
             break
             default:
-                pressed = 0;
+                pressed = null;
         }
     }
     window.addEventListener("keydown", getKey, false);

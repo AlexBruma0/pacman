@@ -162,7 +162,7 @@ const drawRectangels = () => {
             y: mlrectangle.bottomright.y
         }
     }
-    fragmentshader = "./shaders/blue.frag"
+    fragmentshader = "./shaders/green.frag"
     rect(rectangle, fragmentshader)
 
 

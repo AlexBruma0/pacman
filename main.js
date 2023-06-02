@@ -21,10 +21,8 @@ const render = () => {
     gl.clear( gl.COLOR_BUFFER_BIT ); 
 
     drawRectangels()
-   
-    drawCircles()
 
-    triangle()
+    gameLogic()
 
 	window.requestAnimationFrame(render);
 }
