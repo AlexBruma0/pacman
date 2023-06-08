@@ -20,9 +20,13 @@ const render = () => {
 
     gl.clear( gl.COLOR_BUFFER_BIT ); 
 
+
+
     drawRectangels()
 
     gameLogic()
+
+    dashedLines();
 
 	window.requestAnimationFrame(render);
 }

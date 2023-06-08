@@ -2,6 +2,9 @@
 // 1 dot available
 // 2 dot eaten
 // 3 pacman position
+// 4 red ghost
+// 5 teal ghost
+
 
 const state = [
     1,1,1,1,1,1,1,1,1,
@@ -42,10 +45,17 @@ const requestStateChange = (sourceIndex, destIndex) => {
     if (state[destIndex] === 1){
         state[sourceIndex] = 2;
         state[destIndex] = 3
+        increaseScore()
     }
     if (state[destIndex] === 2){
         state[sourceIndex] = 2;
         state[destIndex] = 3
     }
     drawState(state)
+}
+const increaseScore = () => {
+    
+    var score = document.querySelector('#score').innerHTML
+    document.querySelector('#score').innerHTML = String(Number(score)+100)
+    
 }

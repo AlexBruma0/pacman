@@ -1,5 +1,43 @@
 var rectangle;
 const margin = 1/6
+    //topleft 
+    const tlrectangle = {
+        topleft: {
+            x: -1 + 2*margin,
+            y: 1 - 2*margin
+        },
+        topright: {
+            x: -margin/2,
+            y: 1 - 2*margin
+        },
+        bottomleft: {
+            x: -1 + 2*margin,
+            y: 1 - 4*margin
+        },
+        bottomright: {
+            x: -margin/2,
+            y: 1 - 4*margin
+        }
+    }
+       //middle left
+       const mlrectangle = {
+        topleft: {
+            x: tlrectangle.topleft.x,
+            y: margin
+        },
+        topright: {
+            x: tlrectangle.topleft.x+ margin,
+            y: margin
+        },
+        bottomleft: {
+            x: tlrectangle.topleft.x,
+            y: -margin
+        },
+        bottomright: {
+            x: tlrectangle.topleft.x + margin,
+            y: -margin
+        }
+    }
 const drawRectangels = () => {
     rectangle = {
         topleft: {
@@ -21,25 +59,7 @@ const drawRectangels = () => {
     }
     fragmentshader = "./shaders/grey.frag"
     rect(rectangle, fragmentshader)
-    //topleft 
-    const tlrectangle = {
-        topleft: {
-            x: -1 + 2*margin,
-            y: 1 - 2*margin
-        },
-        topright: {
-            x: -margin/2,
-            y: 1 - 2*margin
-        },
-        bottomleft: {
-            x: -1 + 2*margin,
-            y: 1 - 4*margin
-        },
-        bottomright: {
-            x: -margin/2,
-            y: 1 - 4*margin
-        }
-    }
+
     fragmentshader = "./shaders/green.frag"
     rect(tlrectangle, fragmentshader)
     //top right
@@ -103,25 +123,7 @@ const drawRectangels = () => {
     }
     rect(rectangle, fragmentshader)
 
-    //middle left
-    const mlrectangle = {
-        topleft: {
-            x: tlrectangle.topleft.x,
-            y: margin
-        },
-        topright: {
-            x: tlrectangle.topleft.x+ margin,
-            y: margin
-        },
-        bottomleft: {
-            x: tlrectangle.topleft.x,
-            y: -margin
-        },
-        bottomright: {
-            x: tlrectangle.topleft.x + margin,
-            y: -margin
-        }
-    }
+ 
     rect(mlrectangle, fragmentshader)
     //middle right
     rectangle = {
@@ -144,26 +146,7 @@ const drawRectangels = () => {
     }
     rect(rectangle, fragmentshader)
     //middle 
-    rectangle = {
-        topleft: {
-            x: -margin/2,
-            y: mlrectangle.topleft.y
-        },
-        topright: {
-            x: margin/2,
-            y: mlrectangle.topright.y
-        },
-        bottomleft: {
-            x: -margin/2,
-            y: mlrectangle.bottomleft.y
-        },
-        bottomright: {
-            x: margin/2,
-            y: mlrectangle.bottomright.y
-        }
-    }
-    fragmentshader = "./shaders/green.frag"
-    rect(rectangle, fragmentshader)
+    
 
 
     
