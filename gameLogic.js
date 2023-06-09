@@ -52,4 +52,10 @@ const increaseScore = () => {
     document.querySelector('#score').innerHTML = String(Number(score)+100)
     
 }
+const decreaseScore = () => {
+    
+    var score = document.querySelector('#score').innerHTML
+    document.querySelector('#score').innerHTML = String(Number(score)-500)
+    
+}
 
