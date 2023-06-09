@@ -1,6 +1,7 @@
 var pressed = 0;
 var gl
 var fragmentshader
+
 const state = [
     1,1,1,1,1,1,1,1,1,
     1,0,0,0,1,0,0,0,1,
@@ -13,7 +14,6 @@ const state = [
     1,0,0,0,1,0,0,0,1,
     1,1,1,1,3,1,1,1,1,
 ]
-
 window.onload = async function init() {
 
     var canvas = document.getElementById( "gl-canvas" );
@@ -23,10 +23,15 @@ window.onload = async function init() {
 	gl.clearColor( 0.5, 0.5, 0.5, 1.0 );
     program1 = initShaders( gl, "./shaders/dynamic.vert", "./shaders/yellow.frag" );
     program2 = initShaders( gl, "./shaders/dynamic.vert", "./shaders/blue.frag" );
-    //setInterval(decrementTime,1000)
-    //setInterval(ghostsMove, 1000)
     render()
 }
+
+var firstKeyDownHandler = () => {
+    setInterval(decrementTime,1000)
+    setInterval(ghostsMove, 1000)
+    document.removeEventListener('keydown', firstKeyDownHandler);
+}
+document.addEventListener('keydown',firstKeyDownHandler)
 
 const render = () => {
     getKey()

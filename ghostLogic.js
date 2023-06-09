@@ -1,33 +1,50 @@
 const ghostsMove = () =>{
-    moveGhost(4);
+    direction = 'left';
+    moveGhost(4 ,direction);
     //moveGhost(5);
 }
-const moveGhost = (ghostNumber) => {
+const moveGhost = (ghostNumber, direction) => {
     const directions = ['up','down','left','right']
-    const direction = directions[Math.floor(Math.random() * 4)];
     var sourceIndex = state.findIndex(element => element === 4)
+
+    if(!configureDirection(ghostNumber, direction, sourceIndex))
+    {
+        direction = directions[Math.floor(Math.random() * 4)];
+        configureDirection(ghostNumber, direction, sourceIndex)
+    }
+
+}
+const configureDirection = (ghostNumber,direction,sourceIndex) => {
     if (direction === 'down'){
-        requestGhostStateChange(sourceIndex,sourceIndex + numCols, ghostNumber)
         pressed = null
+        return requestGhostStateChange(sourceIndex,sourceIndex + numCols, ghostNumber)
+       
     }
     if (direction === 'up'){
-        requestGhostStateChange(sourceIndex,sourceIndex - numCols, ghostNumber)
         pressed = null
+        return requestGhostStateChange(sourceIndex,sourceIndex - numCols, ghostNumber)
+        
     }
     if (direction === 'right' && (sourceIndex+1)%numCols != 0){
-        requestGhostStateChange(sourceIndex,sourceIndex + 1, ghostNumber)
         pressed = null
+        return requestGhostStateChange(sourceIndex,sourceIndex + 1, ghostNumber)
+        
     }   
     if (direction === 'left'&& sourceIndex%numCols != 0){
-        requestGhostStateChange(sourceIndex,sourceIndex - 1, ghostNumber)
         pressed = null
+        return requestGhostStateChange(sourceIndex,sourceIndex - 1, ghostNumber)
+        
     }
 }
+
 const requestGhostStateChange = (sourceIndex, destIndex, ghostNumber) => {
     if (state[destIndex] === 1 || state[destIndex] === 2){
         state[sourceIndex] = state[destIndex];
         state[destIndex] = ghostNumber
         drawState(state)
+        return true;
+    } else{
+        return false;
     }
     
 }
