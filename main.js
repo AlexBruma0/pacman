@@ -1,6 +1,18 @@
 var pressed = 0;
 var gl
 var fragmentshader
+const state = [
+    1,1,1,1,1,1,1,1,1,
+    1,0,0,0,1,0,0,0,1,
+    1,0,0,0,1,0,0,0,1,
+    1,1,1,1,1,1,1,1,1,
+    1,0,1,1,4,1,1,0,1,
+    1,0,1,1,5,1,1,0,1,
+    1,1,1,1,1,1,1,1,1,
+    1,0,0,0,1,0,0,0,1,
+    1,0,0,0,1,0,0,0,1,
+    1,1,1,1,3,1,1,1,1,
+]
 
 window.onload = async function init() {
 
@@ -11,23 +23,17 @@ window.onload = async function init() {
 	gl.clearColor( 0.5, 0.5, 0.5, 1.0 );
     program1 = initShaders( gl, "./shaders/dynamic.vert", "./shaders/yellow.frag" );
     program2 = initShaders( gl, "./shaders/dynamic.vert", "./shaders/blue.frag" );
-    setInterval(decrementTime,1000)
+    //setInterval(decrementTime,1000)
+    //setInterval(ghostsMove, 1000)
     render()
 }
 
 const render = () => {
     getKey()
-
     gl.clear( gl.COLOR_BUFFER_BIT ); 
-   
-  
-
     drawRectangels()
-
     gameLogic()
-
     dashedLines();
-
 	window.requestAnimationFrame(render);
 }
 const decrementTime = () => {
