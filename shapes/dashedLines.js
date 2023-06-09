@@ -39,7 +39,6 @@ const dashedLines = () => {
     }
 
     
-    console.log(verticesx)
     fs = "./shaders/blue.frag"
     programx = initShaders( gl, "./shaders/static.vert", fs );
 
