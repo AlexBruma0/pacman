@@ -5,9 +5,6 @@
 // 4 red ghost
 // 5 teal ghost
 
-
-
-
 const gameLogic = () => {
     var sourceIndex = state.findIndex(element => element === 3)
     if (pressed === 'down'){
@@ -30,8 +27,6 @@ const gameLogic = () => {
     window.onload = drawState(state)
     
 }
-
-
 
 const requestStateChange = (sourceIndex, destIndex) => {
     if (state[destIndex] === 1){

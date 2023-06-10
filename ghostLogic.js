@@ -5,6 +5,8 @@ var direction;
 const ghostsMove = () =>{
     moveGhost(5);
     moveGhost(4);
+    state[40] = 0
+    state[49] = 0
 }
 
 const moveGhost = (ghostNumber) => {
@@ -36,7 +38,6 @@ const configureDirection = (ghostNumber,direction,sourceIndex) => {
 }
 
 const requestGhostStateChange = (sourceIndex, destIndex, ghostNumber) => {
-    console.log(direction)
     if ((direction === 'left'&& sourceIndex%numCols == 0) || (direction === 'right' && (sourceIndex+1)%numCols == 0)){
         direction = directionsy[Math.floor(Math.random() * 2)];
         direction === 'up' ? destIndex = sourceIndex + numCols : destIndex = sourceIndex - numCols
@@ -45,16 +46,14 @@ const requestGhostStateChange = (sourceIndex, destIndex, ghostNumber) => {
         state[sourceIndex] = state[destIndex];
         state[destIndex] = ghostNumber
         drawState(state)
-
     } 
-    // if (state[destIndex] == 3 ){
-    //     void(0)
-    //     // state[sourceIndex] = state[destIndex];
-    //     // state[destIndex] = ghostNumber
-    //       // decreaseScore()
-    //     // drawState(state)
-    // }
-    
+    else if(state[destIndex] === 3){
+        
+        state[sourceIndex] = state[destIndex];
+        state[destIndex] = ghostNumber
+        decreaseScore()
+        drawState(state)
+    }
     else {
         direction = directions[Math.floor(Math.random() * 4)];
         configureDirection(ghostNumber,direction,sourceIndex)
