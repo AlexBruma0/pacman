@@ -60,3 +60,9 @@ const requestGhostStateChange = (sourceIndex, destIndex, ghostNumber) => {
     }
     
 }
+const decreaseScore = () => {
+    
+    var score = document.querySelector('#score').innerHTML
+    document.querySelector('#score').innerHTML = String(Number(score)-500)
+    
+}
