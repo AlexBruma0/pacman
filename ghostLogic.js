@@ -2,6 +2,7 @@
 const directions = ['up','down','left','right']
 const directionsy = ['up','down']
 var direction;
+const ghostSpeed = 1000
 const ghostsMove = () =>{
     moveGhost(5);
     moveGhost(4);

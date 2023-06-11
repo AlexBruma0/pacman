@@ -28,7 +28,7 @@ window.onload = async function init() {
 
 var firstKeyDownHandler = () => {
     setInterval(decrementTime,1000)
-    setInterval(ghostsMove, 5)
+    setInterval(ghostsMove, ghostSpeed)
     document.removeEventListener('keydown', firstKeyDownHandler);
 }
 document.addEventListener('keydown',firstKeyDownHandler)
