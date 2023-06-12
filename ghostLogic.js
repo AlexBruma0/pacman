@@ -3,11 +3,15 @@ const directions = ['up','down','left','right']
 const directionsy = ['up','down']
 var direction;
 const ghostSpeed = 1000
+const startRedGhostIndex = 40
+const startTealGhostIndex = 49
+const TealGhostNumber = 5
+const redGhostNumber = 4
 const ghostsMove = () =>{
-    moveGhost(5);
-    moveGhost(4);
-    state[40] = 0
-    state[49] = 0
+    //moveGhost(redGhostNumber);
+    moveGhost(TealGhostNumber);
+    state[startTealGhostIndex] = 0
+   // state[startRedGhostIndex] = 0
 }
 
 const moveGhost = (ghostNumber) => {
