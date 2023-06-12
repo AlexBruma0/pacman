@@ -2,15 +2,18 @@
 const directions = ['up','down','left','right']
 const directionsy = ['up','down']
 var direction;
-const ghostSpeed = 1000
+const ghostSpeed = 3000
 const startRedGhostIndex = 40
 const startTealGhostIndex = 49
 const TealGhostNumber = 5
 const redGhostNumber = 4
+const triangleNumber = 3
+const deadzoneNumber = 0
+const dotNumber = 1;
 const ghostsMove = () =>{
     //moveGhost(redGhostNumber);
     moveGhost(TealGhostNumber);
-    state[startTealGhostIndex] = 0
+
    // state[startRedGhostIndex] = 0
 }
 
@@ -50,12 +53,14 @@ const requestGhostStateChange = (sourceIndex, destIndex, ghostNumber) => {
     if (state[destIndex] === 1 || state[destIndex] === 2){
         state[sourceIndex] = state[destIndex];
         state[destIndex] = ghostNumber
+        state[startTealGhostIndex] = 0
         drawState(state)
     } 
-    else if(state[destIndex] === 3){
+    else if(state[destIndex] === triangleNumber){
         
         state[sourceIndex] = state[destIndex];
-        state[destIndex] = ghostNumber
+        state[destIndex] = dotNumber
+        state[startTealGhostIndex] = TealGhostNumber
         decreaseScore()
         drawState(state)
     }
