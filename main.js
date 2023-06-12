@@ -44,8 +44,9 @@ const render = () => {
 const decrementTime = () => {
     
     var time = document.querySelector('#timer').innerHTML
-    if(Number(time) == 0){
-        return
+    if(Number(time) <= 0){
+        document.getElementById("gameover").style.display = 'block'
+        document.getElementById("gl-canvas").style.display = 'none'
     }else{
         document.querySelector('#timer').innerHTML = String(Number(time)-1)
     }

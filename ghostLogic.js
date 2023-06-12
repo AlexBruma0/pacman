@@ -60,7 +60,13 @@ const requestGhostStateChange = (sourceIndex, destIndex, ghostNumber) => {
         
         state[sourceIndex] = state[destIndex];
         state[destIndex] = dotNumber
-        state[startTealGhostIndex] = TealGhostNumber
+        if(ghostNumber == TealGhostNumber){
+            state[startTealGhostIndex] = TealGhostNumber
+        }
+        if(ghostNumber == redGhostNumber){
+            state[startRedGhostIndex] = redGhostNumber
+        }
+
         decreaseScore()
         drawState(state)
     }
@@ -74,7 +80,7 @@ const decreaseScore = () => {
     
     var score = document.querySelector('#score').innerHTML
     document.querySelector('#score').innerHTML = String(Number(score)-500)
-    if(Number(score) - 500 < 0){
+    if(Number(score) - 500 < 0 ){
         document.getElementById("gameover").style.display = 'block'
         document.getElementById("gl-canvas").style.display = 'none'
     }
