@@ -79,17 +79,13 @@ const requestGhostStateChange = (sourceIndex, destIndex, ghostNumber) => {
 }
 const decreaseScore = () => {
     
-    var score = document.querySelector('#score').innerHTML
+    var score = Number(document.querySelector('#score').innerHTML) - 500
     var time = Number(document.querySelector('#timer').innerHTML)
-    document.querySelector('#score').innerHTML = String(Number(score)-500)
-    score -= Number(score) - 500
-    if(Number(score) - 500 < 0 ){
+  
+    if(score < 0 ){
         score += time*100
-        document.getElementById("gameover").innerHTML = `Game over, your final score is: ${score}`
-        document.getElementById("gameover").style.display = 'block'
-        document.getElementById("gl-canvas").style.display = 'none'
+        endgame(score)
     }
+    document.querySelector('#score').innerHTML = String(score)
 
-
-    
 }
