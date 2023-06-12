@@ -43,13 +43,15 @@ const requestStateChange = (sourceIndex, destIndex) => {
 
 const increaseScore = () => {
     
-    var score = document.querySelector('#score').innerHTML
+    var score = Number(document.querySelector('#score').innerHTML)
+    var time = Number(document.querySelector('#timer').innerHTML)
     if(Number(score)+ 100 >= 5800){
-        document.getElementById("gameover").innerHTML = 'You win!'
+        score += time*100
+        document.getElementById("gameover").innerHTML = `You win!, your final score is: ${score}`
         document.getElementById("gameover").style.display = 'block'
         document.getElementById("gl-canvas").style.display = 'none'
     }
-    document.querySelector('#score').innerHTML = String(Number(score)+100)
+    document.querySelector('#score').innerHTML = String(score+100)
     
 }
 

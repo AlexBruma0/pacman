@@ -13,8 +13,8 @@ const dotNumber = 1;
 const ghostsMove = () =>{
     //moveGhost(redGhostNumber);
     moveGhost(TealGhostNumber);
-
-   // state[startRedGhostIndex] = 0
+   // state[startRedGhostIndex] = deadzoneNumber
+ 
 }
 
 const moveGhost = (ghostNumber) => {
@@ -53,7 +53,8 @@ const requestGhostStateChange = (sourceIndex, destIndex, ghostNumber) => {
     if (state[destIndex] === 1 || state[destIndex] === 2){
         state[sourceIndex] = state[destIndex];
         state[destIndex] = ghostNumber
-        state[startTealGhostIndex] = 0
+        state[startTealGhostIndex] = deadzoneNumber
+ 
         drawState(state)
     } 
     else if(state[destIndex] === triangleNumber){
@@ -79,8 +80,12 @@ const requestGhostStateChange = (sourceIndex, destIndex, ghostNumber) => {
 const decreaseScore = () => {
     
     var score = document.querySelector('#score').innerHTML
+    var time = Number(document.querySelector('#timer').innerHTML)
     document.querySelector('#score').innerHTML = String(Number(score)-500)
+    score -= Number(score) - 500
     if(Number(score) - 500 < 0 ){
+        score += time*100
+        document.getElementById("gameover").innerHTML = `Game over, your final score is: ${score}`
         document.getElementById("gameover").style.display = 'block'
         document.getElementById("gl-canvas").style.display = 'none'
     }
