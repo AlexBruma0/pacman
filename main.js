@@ -40,21 +40,22 @@ const render = () => {
 }
 var playHandler = () => {
     console.log(pressed)
-    if(pressed === "s"){
+    if(pressed === "s"|| pressed === "r"){
         timeInterval = setInterval(decrementTime,1000)
         ghostInterval = setInterval(ghostsMove, ghostSpeed)
         gameStarted = true;
-        pressed = null
     }
 }
 const pauseHandler = () => {
     console.log(pressed)
-    if(pressed === "p"){
+    if(pressed === "p" ){
         clearInterval(timeInterval)
         clearInterval(ghostInterval)
         gameStarted = false;
-        pressed = null
     }
+}
+const reloadHandler = () => {
+    location.reload()
 }
 
 const decrementTime = () => {

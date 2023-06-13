@@ -1,5 +1,9 @@
 const getKey = () => {
     const getKey = (key) => {
+        console.log(key)
+        if(key.key === "R" && key.shiftKey){
+            reloadHandler()
+        }
         switch(key.key){
             case "ArrowDown": 
                 pressed = 'down';
@@ -16,6 +20,14 @@ const getKey = () => {
             case "s":
                 pressed = "s";
                 playHandler()
+                break
+            case "r":
+                pressed = "r";
+                playHandler()
+                break
+            case "p":
+                pressed = "p";
+                pauseHandler()
                 break
             case "p":
                 pressed = "p";
