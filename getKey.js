@@ -1,6 +1,5 @@
 const getKey = () => {
     const getKey = (key) => {
-        console.log(key)
         if(key.key === "R" && key.shiftKey){
             reloadHandler()
         }
@@ -36,7 +35,6 @@ const getKey = () => {
             default:
                 pressed = null;
         }
-        console.log(pressed)
     }
     window.addEventListener("keydown", getKey, false);
 }

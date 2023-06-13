@@ -39,20 +39,14 @@ const render = () => {
 	window.requestAnimationFrame(render);
 }
 var playHandler = () => {
-    console.log(pressed)
-    if(pressed === "s"|| pressed === "r"){
-        timeInterval = setInterval(decrementTime,1000)
-        ghostInterval = setInterval(ghostsMove, ghostSpeed)
-        gameStarted = true;
-    }
+    timeInterval = setInterval(decrementTime,1000)
+    ghostInterval = setInterval(ghostsMove, ghostSpeed)
+    gameStarted = true;
 }
 const pauseHandler = () => {
-    console.log(pressed)
-    if(pressed === "p" ){
-        clearInterval(timeInterval)
-        clearInterval(ghostInterval)
-        gameStarted = false;
-    }
+    clearInterval(timeInterval)
+    clearInterval(ghostInterval)
+    gameStarted = false;
 }
 const reloadHandler = () => {
     location.reload()
