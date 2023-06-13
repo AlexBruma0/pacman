@@ -2,6 +2,8 @@ var pressed;
 var gl
 var fragmentshader
 var gameStarted = false;
+var timeInterval
+var ghostInterval
 
 const state = [
     1,1,1,1,1,1,1,1,1,
@@ -28,26 +30,33 @@ window.onload = async function init() {
     render()
 }
 
-var firstKeyDownHandler = () => {
-    console.log(pressed)
-    if(pressed === "s"){
-        setInterval(decrementTime,1000)
-        setInterval(ghostsMove, ghostSpeed)
-        gameStarted = true;
-        pressed = null
-       // document.removeEventListener('keydown', firstKeyDownHandler);
-    }
-}
-//document.addEventListener('keydown',firstKeyDownHandler)
-
 const render = () => {
- 
+    
     gl.clear( gl.COLOR_BUFFER_BIT ); 
     drawRectangels()
     gameLogic()
     dashedLines();
 	window.requestAnimationFrame(render);
 }
+var playHandler = () => {
+    console.log(pressed)
+    if(pressed === "s"){
+        timeInterval = setInterval(decrementTime,1000)
+        ghostInterval = setInterval(ghostsMove, ghostSpeed)
+        gameStarted = true;
+        pressed = null
+    }
+}
+const pauseHandler = () => {
+    console.log(pressed)
+    if(pressed === "p"){
+        clearInterval(timeInterval)
+        clearInterval(ghostInterval)
+        gameStarted = false;
+        pressed = null
+    }
+}
+
 const decrementTime = () => {
     
     var time = document.querySelector('#timer').innerHTML

@@ -15,7 +15,11 @@ const getKey = () => {
                 break
             case "s":
                 pressed = "s";
-                firstKeyDownHandler();
+                playHandler()
+                break
+            case "p":
+                pressed = "p";
+                pauseHandler()
                 break
             default:
                 pressed = null;
