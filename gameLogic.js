@@ -6,6 +6,10 @@
 // 5 teal ghost
 
 const gameLogic = () => {
+    window.onload = drawState(state)
+    if(!gameStarted){
+        return
+    }
     var sourceIndex = state.findIndex(element => element === 3)
     if (pressed === 'down'){
         requestStateChange(sourceIndex,sourceIndex + numCols)
@@ -24,7 +28,7 @@ const gameLogic = () => {
         pressed = null
     }
 
-    window.onload = drawState(state)
+ 
     
 }
 

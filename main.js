@@ -1,6 +1,7 @@
 var pressed;
 var gl
 var fragmentshader
+var gameStarted = false;
 
 const state = [
     1,1,1,1,1,1,1,1,1,
@@ -32,6 +33,7 @@ var firstKeyDownHandler = () => {
     if(pressed === "s"){
         setInterval(decrementTime,1000)
         setInterval(ghostsMove, ghostSpeed)
+        gameStarted = true;
         pressed = null
        // document.removeEventListener('keydown', firstKeyDownHandler);
     }
