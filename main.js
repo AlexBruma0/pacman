@@ -1,4 +1,4 @@
-var pressed = 0;
+var pressed;
 var gl
 var fragmentshader
 
@@ -23,18 +23,23 @@ window.onload = async function init() {
 	gl.clearColor( 0.5, 0.5, 0.5, 1.0 );
     program1 = initShaders( gl, "./shaders/dynamic.vert", "./shaders/yellow.frag" );
     program2 = initShaders( gl, "./shaders/dynamic.vert", "./shaders/blue.frag" );
+    getKey()
     render()
 }
 
 var firstKeyDownHandler = () => {
-    setInterval(decrementTime,1000)
-    setInterval(ghostsMove, ghostSpeed)
-    document.removeEventListener('keydown', firstKeyDownHandler);
+    console.log(pressed)
+    if(pressed === "s"){
+        setInterval(decrementTime,1000)
+        setInterval(ghostsMove, ghostSpeed)
+        pressed = null
+       // document.removeEventListener('keydown', firstKeyDownHandler);
+    }
 }
-document.addEventListener('keydown',firstKeyDownHandler)
+//document.addEventListener('keydown',firstKeyDownHandler)
 
 const render = () => {
-    getKey()
+ 
     gl.clear( gl.COLOR_BUFFER_BIT ); 
     drawRectangels()
     gameLogic()
