@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html>
- 
-
   <script type="text/javascript" src="./Common/webgl-utils.js"></script>
   <script type="text/javascript" src="./Common/initShaders.js"></script>
   <script type="text/javascript" src="./Common/MV.js"></script>
@@ -17,16 +15,42 @@
   <script type="text/javascript" src="ghostLogic.js"></script>
   <script type="text/javascript" src="./shapes/cherry.js"></script>
 
-
-
   <body>
-    <div id="timer" style="position: absolute; top: 15px; left: 45px; color: white; font-size: 2rem; font-family: sans-serif;">60</div>
-    <div id="score" style="position: absolute; top: 15px; left: 399px; color: white; font-size: 2rem; font-family: sans-serif;">0</div>
-    <div id="gameover" style="position: absolute; top: 200px; left: 200px; display: none;"> Game over</div>
-    <canvas id="gl-canvas" width="469" height="512" style="display: block;"
+    <div
+      id="timer"
+      style="
+        position: absolute;
+        top: 15px;
+        left: 45px;
+        color: white;
+        font-size: 2rem;
+        font-family: sans-serif;
+      "
+    >
+      60
+    </div>
+    <div
+      id="score"
+      style="
+        position: absolute;
+        top: 15px;
+        left: 399px;
+        color: white;
+        font-size: 2rem;
+        font-family: sans-serif;
+      "
+    >
+      0
+    </div>
+    <div
+      id="gameover"
+      style="position: absolute; top: 200px; left: 200px; display: none"
+    >
+      Game over
+    </div>
+    <canvas id="gl-canvas" width="469" height="512" style="display: block"
       >> Oops ... your browser doesn't support the HTML5 canvas element
     </canvas>
     <!-- <div style="background-color: rgb(80,110,130); height: 100vh;"></div> -->
-
   </body>
 </html>
