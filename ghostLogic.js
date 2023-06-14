@@ -1,8 +1,7 @@
 
 const ghostsMove = () => {
-  //moveGhost(redGhostNumber);
+  moveGhost(redGhostNumber);
   moveGhost(TealGhostNumber);
-  // state[startRedGhostIndex] = deadzoneNumber
 };
 
 const moveGhost = (ghostNumber) => {
@@ -52,7 +51,10 @@ const requestGhostStateChange = (sourceIndex, destIndex, ghostNumber) => {
   if (state[destIndex] === 1 || state[destIndex] === 2) {
     state[sourceIndex] = state[destIndex];
     state[destIndex] = ghostNumber;
-    state[startTealGhostIndex] = deadzoneNumber;
+    ghostNumber == TealGhostNumber ?
+    state[startTealGhostIndex] = deadzoneNumber
+    :
+    state[startRedGhostIndex] = deadzoneNumber
 
     drawState(state);
   } else if (state[destIndex] === triangleNumber) {
