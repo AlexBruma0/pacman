@@ -10,6 +10,7 @@ const redGhostNumber = 4
 const triangleNumber = 3
 const deadzoneNumber = 0
 const dotNumber = 1;
+const cherryNumber = 6
 const ghostsMove = () =>{
     //moveGhost(redGhostNumber);
     moveGhost(TealGhostNumber);

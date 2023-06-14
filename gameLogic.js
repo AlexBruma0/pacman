@@ -4,6 +4,7 @@
 // 3 pacman position
 // 4 red ghost
 // 5 teal ghost
+// 6 cherry
 
 const gameLogic = () => {
     window.onload = drawState(state)

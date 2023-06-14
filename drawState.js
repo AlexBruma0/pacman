@@ -22,6 +22,10 @@ const drawState = (state) =>{
             fs = "./shaders/teal.frag"
             ghost(startx + (xspace) * (index%numCols), starty - margin * Math.floor(index/numCols),fs)
         }
+        if(element == cherryNumber){
+            fs = "./shaders/teal.frag"
+            cherry(startx + xspace * (index%numCols) , starty - margin * Math.floor(index/numCols))
+        }
     })
 }
 
