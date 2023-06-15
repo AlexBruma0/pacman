@@ -6,11 +6,11 @@ const ghostsMove = () => {
 
 const moveGhost = (ghostNumber) => {
   var sourceIndex = state.findIndex((element) => element === ghostNumber);
-  if (!direction && ghostNumber == 4) {
+  ghostNumber == redGhostNumber ? direction = directionRedGhost : direction = directionTealGhost
+  if (!direction && ghostNumber == redGhostNumber) {
     direction = "left";
-    direction = null;
   }
-  if (!direction && ghostNumber == 5) {
+  if (!direction && ghostNumber == TealGhostNumber) {
     direction = "right";
   }
   configureDirection(ghostNumber, direction, sourceIndex);
@@ -39,6 +39,7 @@ const configureDirection = (ghostNumber, direction, sourceIndex) => {
 };
 
 const requestGhostStateChange = (sourceIndex, destIndex, ghostNumber) => {
+  ghostNumber == redGhostNumber ? direction = directionRedGhost : direction = directionTealGhost
   if (
     (direction === "left" && sourceIndex % numCols == 0) ||
     (direction === "right" && (sourceIndex + 1) % numCols == 0)
@@ -71,6 +72,7 @@ const requestGhostStateChange = (sourceIndex, destIndex, ghostNumber) => {
     drawState(state);
   } else {
     direction = directions[Math.floor(Math.random() * 4)];
+    ghostNumber == redGhostNumber ? directionRedGhost = direction : directionTealGhost = direction
     configureDirection(ghostNumber, direction, sourceIndex);
   }
 };

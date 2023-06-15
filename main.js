@@ -1,6 +1,6 @@
 const directions = ["up", "down", "left", "right"];
 const directionsy = ["up", "down"];
-const ghostSpeed = 100;
+const ghostSpeed = 1000;
 const startRedGhostIndex = 40;
 const startTealGhostIndex = 49;
 const TealGhostNumber = 5;
@@ -11,7 +11,8 @@ const dotNumber = 1;
 const cherryNumber = 6;
 const dotEatenNumber = 2
 var ghostsActivated = true
-var direction;
+var directionRedGhost;
+var directionTealGhost;
 var gl;
 var pressed;
 var fragmentshader;
