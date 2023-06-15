@@ -68,9 +68,7 @@ const endgame = (score) => {
     "gameover"
   ).innerHTML = `Your final score is: ${score}`;
   document.getElementById("gameover").style.display = "block";
-  document.getElementById("gl-canvas").style.display = "none";
-  document.getElementById("timer").style.color = "black";
-  document.getElementById("score").style.color = "black";
+  document.getElementById("gl-canvas").style.opacity = "0.5";
 };
 const gameOver = () => {
   document.getElementById(
