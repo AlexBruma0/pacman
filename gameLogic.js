@@ -63,4 +63,11 @@ const endgame = (score) => {
   document.getElementById("timer").style.color = "black";
   document.getElementById("score").style.color = "black";
 };
+const gameOver = () => {
+  document.getElementById(
+    "gameover"
+  ).innerHTML = `Game over, your score dropped below 0`;
+  document.getElementById("gameover").style.display = "block";
+  document.getElementById("gl-canvas").style.display = "none";
+};
 

@@ -80,7 +80,7 @@ const decreaseScore = () => {
 
   if (score < 0) {
     score += time * 100;
-    endgame(score);
+    gameOver();
   }
   document.querySelector("#score").innerHTML = String(score);
 };
