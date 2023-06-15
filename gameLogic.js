@@ -48,12 +48,21 @@ const eatCherryHandler = () => {
 const increaseScore = () => {
   var score = Number(document.querySelector("#score").innerHTML) + 100;
   var time = Number(document.querySelector("#timer").innerHTML);
-  if (score >= 5800) {
+  if (!dotsAvailable()) {
     score += time * 100;
     endgame(score);
   }
   document.querySelector("#score").innerHTML = String(score);
 };
+const dotsAvailable = () => {
+  var dots;
+  state.forEach(element => {
+    if(element == 1){
+      dots = true
+    }
+  })
+  return dots
+}
 const endgame = (score) => {
   document.getElementById(
     "gameover"
