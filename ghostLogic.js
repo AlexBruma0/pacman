@@ -50,14 +50,11 @@ const requestGhostStateChange = (sourceIndex, destIndex, ghostNumber) => {
       ? (destIndex = sourceIndex + numCols)
       : (destIndex = sourceIndex - numCols);
   }
-  if (state[destIndex] === 1 || state[destIndex] === 2) {
-    state[sourceIndex] = state[destIndex];
+  if (state[destIndex] === dotNumber || state[destIndex] === dotEatenNumber) {
+    state[sourceIndex] = (ghostNumber == redGhostNumber) ? underRedGhost : underGreenGhost;
+    (ghostNumber == redGhostNumber) ? underRedGhost = state[destIndex] : underGreenGhost = state[destIndex]
     state[destIndex] = ghostNumber;
-    ghostNumber == TealGhostNumber ?
-    state[startTealGhostIndex] = deadzoneNumber
-    :
-    state[startRedGhostIndex] = deadzoneNumber
-
+    (ghostNumber == TealGhostNumber) ? state[startTealGhostIndex] = deadzoneNumber : state[startRedGhostIndex] = deadzoneNumber
     drawState(state);
   } else if (state[destIndex] === triangleNumber) {
     state[sourceIndex] = state[destIndex];

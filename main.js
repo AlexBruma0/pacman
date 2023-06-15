@@ -10,6 +10,8 @@ const deadzoneNumber = 0;
 const dotNumber = 1;
 const cherryNumber = 6;
 const dotEatenNumber = 2
+var underRedGhost= deadzoneNumber
+var underGreenGhost= deadzoneNumber
 var ghostsActivated = true
 var directionRedGhost;
 var directionTealGhost;
