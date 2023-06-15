@@ -12,8 +12,8 @@ const cherryNumber = 6;
 const dotEatenNumber = 2
 var ghostsActivated = true
 var direction;
-var pressed;
 var gl;
+var pressed;
 var fragmentshader;
 var gameStarted = false;
 var timeInterval;
@@ -62,11 +62,13 @@ const reloadHandler = () => {
 };
 
 const decrementTime = () => {
-  var time = document.querySelector("#timer").innerHTML;
+  var time = Number(document.querySelector("#timer").innerHTML);
+  var score = Number(document.querySelector("#score").innerHTML) + 100;
   if (Number(time) <= 0) {
-    document.getElementById("gameover").style.display = "block";
-    document.getElementById("gl-canvas").style.display = "none";
+    score += time * 100;
+    endgame(score);
+    
   } else {
-    document.querySelector("#timer").innerHTML = String(Number(time) - 1);
+    document.querySelector("#timer").innerHTML = String(time - 1);
   }
 };
