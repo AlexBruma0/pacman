@@ -45,6 +45,7 @@ const requestGhostStateChange = (sourceIndex, destIndex, ghostNumber) => {
     (direction === "right" && (sourceIndex + 1) % numCols == 0)
   ) {
     direction = directionsy[Math.floor(Math.random() * 2)];
+    ghostNumber == redGhostNumber ? directionRedGhost = direction : directionTealGhost = direction
     direction === "up"
       ? (destIndex = sourceIndex + numCols)
       : (destIndex = sourceIndex - numCols);
