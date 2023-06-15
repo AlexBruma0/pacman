@@ -1,7 +1,7 @@
 
 const ghostsMove = () => {
   moveGhost(redGhostNumber);
-  //moveGhost(TealGhostNumber);
+  moveGhost(TealGhostNumber);
 };
 
 const moveGhost = (ghostNumber) => {
@@ -55,11 +55,35 @@ const requestGhostStateChange = (sourceIndex, destIndex, ghostNumber) => {
     }
 
   }
+  if(sourceIndex % numCols == 0 && direction === "up" && (destIndex === topLeftThreeWayIndex || destIndex === bottomLeftThreeWayIndex)){
+    console.log('threeway',destIndex)
+    direction = upRightDirections[Math.floor(Math.random() *2)]
+    ghostNumber == redGhostNumber ? directionRedGhost = direction : directionTealGhost = direction
+  }
+  if(sourceIndex % numCols == 0 && direction === "down" && (destIndex === topLeftThreeWayIndex || destIndex === bottomLeftThreeWayIndex)){
+    console.log('threeway',destIndex)
+
+    direction = downRightDirections[Math.floor(Math.random() *2)]
+    ghostNumber == redGhostNumber ? directionRedGhost = direction : directionTealGhost = direction
+  }
+  if((sourceIndex + 1) % numCols == 0 && direction === "up" && (destIndex === topRightThreeWayIndex || destIndex === bottomRightThreeWayIndex)){
+    console.log('threeway',destIndex)
+    direction = upLeftDirections[Math.floor(Math.random() *2)]
+    ghostNumber == redGhostNumber ? directionRedGhost = direction : directionTealGhost = direction
+  }
+  if((sourceIndex + 1) % numCols == 0 && direction === "down" && (destIndex === topRightThreeWayIndex || destIndex === bottomRightThreeWayIndex)){
+    console.log('threeway',destIndex)
+
+    direction = downLeftDirections[Math.floor(Math.random() *2)]
+    ghostNumber == redGhostNumber ? directionRedGhost = direction : directionTealGhost = direction
+  }
   if (state[destIndex] === dotNumber || state[destIndex] === dotEatenNumber) {
+
     state[sourceIndex] = (ghostNumber == redGhostNumber) ? underRedGhost : underGreenGhost;
     (ghostNumber == redGhostNumber) ? underRedGhost = state[destIndex] : underGreenGhost = state[destIndex]
     state[destIndex] = ghostNumber;
     (ghostNumber == TealGhostNumber) ? state[startTealGhostIndex] = deadzoneNumber : state[startRedGhostIndex] = deadzoneNumber
+    
     drawState(state);
   } else if (state[destIndex] === triangleNumber) {
     state[sourceIndex] = state[destIndex];
@@ -79,6 +103,7 @@ const requestGhostStateChange = (sourceIndex, destIndex, ghostNumber) => {
     configureDirection(ghostNumber, direction, sourceIndex);
   }
 };
+
 const decreaseScore = () => {
   var score = Number(document.querySelector("#score").innerHTML) - 500;
   var time = Number(document.querySelector("#timer").innerHTML);
