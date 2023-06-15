@@ -1,6 +1,6 @@
 const directions = ["up", "down", "left", "right"];
 const directionsy = ["up", "down"];
-const ghostSpeed = 1000;
+const ghostSpeed = 100;
 const startRedGhostIndex = 40;
 const startTealGhostIndex = 49;
 const TealGhostNumber = 5;
@@ -72,3 +72,7 @@ const decrementTime = () => {
     document.querySelector("#timer").innerHTML = String(time - 1);
   }
 };
+const startGame = () => {
+    document.getElementById('gl-canvas').style.opacity = '1.0'
+    document.getElementById('start').style.opacity = '0'
+}

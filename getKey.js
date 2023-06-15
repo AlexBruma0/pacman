@@ -19,6 +19,7 @@ const getKey = () => {
       case "s":
         pressed = "s";
         playHandler();
+        startGame();
         break;
       case "r":
         pressed = "r";
