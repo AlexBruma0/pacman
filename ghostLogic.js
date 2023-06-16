@@ -56,43 +56,35 @@ const requestGhostStateChange = (sourceIndex, destIndex, ghostNumber) => {
 
   }
   if(sourceIndex % numCols == 0 && direction === "up" && (destIndex === topLeftThreeWayIndex || destIndex === bottomLeftThreeWayIndex)){
-    console.log('threeway',destIndex)
     direction = upRightDirections[Math.floor(Math.random() *2)]
     ghostNumber == redGhostNumber ? directionRedGhost = direction : directionTealGhost = direction
   }
   if(sourceIndex % numCols == 0 && direction === "down" && (destIndex === topLeftThreeWayIndex || destIndex === bottomLeftThreeWayIndex)){
-    console.log('threeway',destIndex)
     direction = downRightDirections[Math.floor(Math.random() *2)]
     ghostNumber == redGhostNumber ? directionRedGhost = direction : directionTealGhost = direction
   }
   if((sourceIndex + 1) % numCols == 0 && direction === "up" && (destIndex === topRightThreeWayIndex || destIndex === bottomRightThreeWayIndex)){
-    console.log('threeway',destIndex)
     direction = upLeftDirections[Math.floor(Math.random() *2)]
     ghostNumber == redGhostNumber ? directionRedGhost = direction : directionTealGhost = direction
   }
   if((sourceIndex + 1) % numCols == 0 && direction === "down" && (destIndex === topRightThreeWayIndex || destIndex === bottomRightThreeWayIndex)){
-    console.log('threeway',destIndex)
     direction = downLeftDirections[Math.floor(Math.random() *2)]
     ghostNumber == redGhostNumber ? directionRedGhost = direction : directionTealGhost = direction
   }
   if((sourceIndex % numCols == sourceIndex) && direction === "left" && destIndex === topMiddleThreeWayIndex ){
-    console.log('threeway',destIndex)
     direction = downLeftDirections[Math.floor(Math.random() *2)]
     ghostNumber == redGhostNumber ? directionRedGhost = direction : directionTealGhost = direction
   }
   if((sourceIndex % numCols == sourceIndex ) && direction === "right" && destIndex === topMiddleThreeWayIndex ){
-    console.log('threeway',destIndex)
     direction = downRightDirections[Math.floor(Math.random() *2)]
     ghostNumber == redGhostNumber ? directionRedGhost = direction : directionTealGhost = direction
   }
   if(((sourceIndex % numCols) + 81 == sourceIndex) && direction === "left" && destIndex === bottomMiddleThreeWayIndex ){
-    console.log('threeway',destIndex)
-    direction = "up"
+    direction = upLeftDirections[Math.floor(Math.random() *2)]
     ghostNumber == redGhostNumber ? directionRedGhost = direction : directionTealGhost = direction
   }
   if(((sourceIndex % numCols) + 81 == sourceIndex) && direction === "right" && destIndex === bottomMiddleThreeWayIndex ){
-    console.log('threeway',destIndex)
-    direction = "up"
+    direction = upRightDirections[Math.floor(Math.random() *2)]
     ghostNumber == redGhostNumber ? directionRedGhost = direction : directionTealGhost = direction
   }
   
