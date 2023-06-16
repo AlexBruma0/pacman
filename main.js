@@ -1,6 +1,6 @@
 const directions = ["up", "down", "left", "right"];
 const directionsy = ["up", "down"];
-const ghostSpeed = 200;
+const ghostSpeed = 50;
 const startRedGhostIndex = 40;
 const startTealGhostIndex = 49;
 const TealGhostNumber = 5;
