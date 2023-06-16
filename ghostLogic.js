@@ -1,6 +1,6 @@
 
 const ghostsMove = () => {
-  //moveGhost(redGhostNumber);
+  moveGhost(redGhostNumber);
   moveGhost(TealGhostNumber);
 };
 
@@ -96,7 +96,7 @@ const requestGhostStateChange = (sourceIndex, destIndex, ghostNumber) => {
     ghostNumber == redGhostNumber ? directionRedGhost = direction : directionTealGhost = direction
   }
   
-  if (state[destIndex] === dotNumber || state[destIndex] === dotEatenNumber) {
+  if (state[destIndex] === dotNumber || state[destIndex] === dotEatenNumber || state[destIndex] === cherryNumber) {
 
     state[sourceIndex] = (ghostNumber == redGhostNumber) ? underRedGhost : underGreenGhost;
     (ghostNumber == redGhostNumber) ? underRedGhost = state[destIndex] : underGreenGhost = state[destIndex]
