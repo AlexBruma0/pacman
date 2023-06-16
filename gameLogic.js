@@ -39,6 +39,18 @@ const requestStateChange = (sourceIndex, destIndex) => {
     state[destIndex] = triangleNumber;
     eatCherryHandler();
   }
+  if (state[destIndex] === redGhostNumber){
+    state[sourceIndex] = dotEatenNumber
+    state[destIndex] = triangleNumber
+    state[startRedGhostIndex] = redGhostNumber
+    decreaseScore()
+  }
+  if (state[destIndex] === TealGhostNumber){
+    state[sourceIndex] = dotEatenNumber
+    state[destIndex] = triangleNumber
+    state[startTealGhostIndex] = TealGhostNumber
+    decreaseScore()
+  }
   drawState(state);
 };
 const eatCherryHandler = () => {
