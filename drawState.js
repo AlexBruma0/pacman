@@ -20,24 +20,22 @@ const drawState = (state) => {
         starty - margin * Math.floor(index / numCols)
       );
     }
-    if (element == 4) {
-      fs = "./shaders/red.frag";
-      ghost(
+    if (element == redGhostNumber) {
+
+      redGhost(
         startx + xspace * (index % numCols),
-        starty - margin * Math.floor(index / numCols),
-        fs
+        starty - margin * Math.floor(index / numCols)
       );
     }
-    if (element == 5) {
-      fs = "./shaders/teal.frag";
-      ghost(
+    if (element == TealGhostNumber) {
+
+      tealGhost(
         startx + xspace * (index % numCols),
-        starty - margin * Math.floor(index / numCols),
-        fs
+        starty - margin * Math.floor(index / numCols)
       );
     }
     if (element == cherryNumber) {
-      fs = "./shaders/teal.frag";
+
       cherry(
         startx + xspace * (index % numCols),
         starty - margin * Math.floor(index / numCols)
@@ -46,9 +44,9 @@ const drawState = (state) => {
   });
 };
 
-const ghost = (x, y, fs) => {
+const redGhost = (x, y) => {
   const ghostLength = (1 / 2) * margin;
-  rect(
+  redRect(
     {
       topleft: {
         x: x - ghostLength / 2,
@@ -66,7 +64,29 @@ const ghost = (x, y, fs) => {
         x: x + ghostLength / 2,
         y: y - ghostLength / 2,
       },
-    },
-    fs
+    }
+  );
+};
+const tealGhost = (x, y) => {
+  const ghostLength = (1 / 2) * margin;
+  tealRect(
+    {
+      topleft: {
+        x: x - ghostLength / 2,
+        y: y + ghostLength / 2,
+      },
+      topright: {
+        x: x + ghostLength / 2,
+        y: y + ghostLength / 2,
+      },
+      bottomleft: {
+        x: x - ghostLength / 2,
+        y: y - ghostLength / 2,
+      },
+      bottomright: {
+        x: x + ghostLength / 2,
+        y: y - ghostLength / 2,
+      },
+    }
   );
 };

@@ -58,6 +58,8 @@ window.onload = async function init() {
   programGreen = initShaders(gl, "./shaders/static.vert", "./shaders/green.frag");
   programBlue = initShaders(gl, "./shaders/static.vert", "./shaders/blue.frag");
   programGrey = initShaders(gl, "./shaders/static.vert", "./shaders/grey.frag");
+  programTeal = initShaders(gl, "./shaders/static.vert", "./shaders/teal.frag");
+  programRed = initShaders(gl, "./shaders/static.vert", "./shaders/red.frag");
   getKey();
   render();
 };
