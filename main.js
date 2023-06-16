@@ -1,6 +1,6 @@
 const directions = ["up", "down", "left", "right"];
 const directionsy = ["up", "down"];
-const ghostSpeed = 50;
+const ghostSpeed = 100;
 const startRedGhostIndex = 40;
 const startTealGhostIndex = 49;
 const TealGhostNumber = 5;
@@ -13,7 +13,7 @@ const dotEatenNumber = 2
 const topLeftThreeWayIndex = 27
 const bottomLeftThreeWayIndex = 54
 const topMiddleThreeWayIndex = 4
-const bottomMiddleThreeWayIndex = 86
+const bottomMiddleThreeWayIndex = 85
 const topRightThreeWayIndex = 35
 const bottomRightThreeWayIndex = 62
 const upRightDirections = ["up", "right"]

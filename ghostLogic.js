@@ -87,12 +87,12 @@ const requestGhostStateChange = (sourceIndex, destIndex, ghostNumber) => {
   }
   if(((sourceIndex % numCols) + 81 == sourceIndex) && direction === "left" && destIndex === bottomMiddleThreeWayIndex ){
     console.log('threeway',destIndex)
-    direction = upLeftDirections[Math.floor(Math.random() *2)]
+    direction = "up"
     ghostNumber == redGhostNumber ? directionRedGhost = direction : directionTealGhost = direction
   }
   if(((sourceIndex % numCols) + 81 == sourceIndex) && direction === "right" && destIndex === bottomMiddleThreeWayIndex ){
     console.log('threeway',destIndex)
-    direction = upRightDirections[Math.floor(Math.random() *2)]
+    direction = "up"
     ghostNumber == redGhostNumber ? directionRedGhost = direction : directionTealGhost = direction
   }
   
