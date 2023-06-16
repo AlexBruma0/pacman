@@ -106,7 +106,7 @@ const requestGhostStateChange = (sourceIndex, destIndex, ghostNumber) => {
     drawState(state);
   } else if (state[destIndex] === triangleNumber) {
     state[sourceIndex] = state[destIndex];
-    state[destIndex] = dotNumber;
+    state[destIndex] = deadzoneNumber;
     if (ghostNumber == TealGhostNumber) {
       state[startTealGhostIndex] = TealGhostNumber;
     }
