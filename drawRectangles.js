@@ -57,11 +57,11 @@ const drawRectangels = () => {
       y: -1 + margin,
     },
   };
-  fragmentshader = "./shaders/grey.frag";
-  rect(rectangle, fragmentshader);
 
-  fragmentshader = "./shaders/green.frag";
-  rect(tlrectangle, fragmentshader);
+  greyRect(rectangle);
+
+
+  greenRect(tlrectangle);
   //top right
   rectangle = {
     topleft: {
@@ -81,7 +81,7 @@ const drawRectangels = () => {
       y: tlrectangle.bottomright.y,
     },
   };
-  rect(rectangle, fragmentshader);
+  greenRect(rectangle);
   //bottom left
   rectangle = {
     topleft: {
@@ -101,7 +101,7 @@ const drawRectangels = () => {
       y: -tlrectangle.bottomright.y,
     },
   };
-  rect(rectangle, fragmentshader);
+  greenRect(rectangle);
   //bottom right
   rectangle = {
     topleft: {
@@ -121,9 +121,9 @@ const drawRectangels = () => {
       y: -tlrectangle.bottomright.y,
     },
   };
-  rect(rectangle, fragmentshader);
+  greenRect(rectangle);
 
-  rect(mlrectangle, fragmentshader);
+  greenRect(mlrectangle);
   //middle right
   rectangle = {
     topleft: {
@@ -143,6 +143,6 @@ const drawRectangels = () => {
       y: mlrectangle.bottomright.y,
     },
   };
-  rect(rectangle, fragmentshader);
+  greenRect(rectangle);
   //middle
 };

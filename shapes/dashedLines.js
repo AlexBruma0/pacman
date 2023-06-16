@@ -1,4 +1,3 @@
-var programx;
 var vBufferx;
 
 const dashedLines = () => {
@@ -38,13 +37,13 @@ const dashedLines = () => {
   }
 
   fs = "./shaders/blue.frag";
-  programx = initShaders(gl, "./shaders/static.vert", fs);
 
-  gl.useProgram(programx);
+
+  gl.useProgram(programBlue);
   vBufferx = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, vBufferx);
   gl.bufferData(gl.ARRAY_BUFFER, flatten(verticesx), gl.STATIC_DRAW);
-  var vPositionx = gl.getAttribLocation(programx, "vPosition2");
+  var vPositionx = gl.getAttribLocation(programBlue, "vPosition2");
   gl.vertexAttribPointer(vPositionx, 2, gl.FLOAT, false, 0, 0);
   gl.enableVertexAttribArray(vPositionx);
   gl.drawArrays(gl.LINES, 0, verticesx.length);

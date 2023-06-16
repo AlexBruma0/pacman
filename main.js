@@ -55,7 +55,9 @@ window.onload = async function init() {
   program1 = initShaders(gl, "./shaders/dynamic.vert", "./shaders/yellow.frag");
   program2 = initShaders(gl, "./shaders/dynamic.vert", "./shaders/blue.frag");
   program3 = initShaders(gl, "./shaders/dynamic.vert", "./shaders/red.frag");
-  program4 = initShaders(gl, "./shaders/static.vert", "./shaders/green.frag");
+  programGreen = initShaders(gl, "./shaders/static.vert", "./shaders/green.frag");
+  programBlue = initShaders(gl, "./shaders/static.vert", "./shaders/blue.frag");
+  programGrey = initShaders(gl, "./shaders/static.vert", "./shaders/grey.frag");
   getKey();
   render();
 };
