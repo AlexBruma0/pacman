@@ -1,6 +1,6 @@
 const directions = ["up", "down", "left", "right"];
 const directionsy = ["up", "down"];
-const ghostSpeed = 50;
+const ghostSpeed = 100;
 const startRedGhostIndex = 40;
 const startTealGhostIndex = 49;
 const TealGhostNumber = 5;
@@ -31,7 +31,7 @@ var fragmentshader;
 var gameStarted = false;
 var timeInterval;
 var ghostInterval;
-
+// prettier-ignore
 const state = [
   1, 1, 1, 1, 1, 1, 1, 1, 1,
   1, 0, 0, 0, 1, 0, 0, 0, 1,

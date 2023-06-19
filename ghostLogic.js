@@ -1,4 +1,3 @@
-
 const ghostsMove = () => {
   moveGhost(redGhostNumber);
   moveGhost(TealGhostNumber);
@@ -97,13 +96,18 @@ const requestGhostStateChange = (sourceIndex, destIndex, ghostNumber) => {
     
     drawState(state);
   } else if (state[destIndex] === triangleNumber) {
-    state[sourceIndex] = state[destIndex];
-    state[destIndex] = dotEatenNumber;
+    state[sourceIndex] = (ghostNumber == redGhostNumber) ? underRedGhost : underGreenGhost;
+    (ghostNumber == redGhostNumber) ? underRedGhost = state[destIndex] : underGreenGhost = state[destIndex]
+    state[destIndex] = ghostNumber;
+
     if (ghostNumber == TealGhostNumber) {
       state[startTealGhostIndex] = TealGhostNumber;
+      setTimeout(() => state[destIndex] = triangleNumber, 100)
+      
     }
     if (ghostNumber == redGhostNumber) {
       state[startRedGhostIndex] = redGhostNumber;
+      setTimeout(() => state[destIndex] = triangleNumber, 100)
     }
     ghostsActivated ? decreaseScore() : ghostsActivated = true
  
