@@ -10,7 +10,7 @@ const moveGhost = (ghostNumber) => {
     direction = "left";
   }
   if (!direction && ghostNumber == TealGhostNumber) {
-    direction = "up";
+    direction = "right";
   }
   configureDirection(ghostNumber, direction, sourceIndex);
 };
@@ -105,12 +105,12 @@ const requestGhostStateChange = async (sourceIndex, destIndex, ghostNumber) => {
 
     if (ghostNumber == TealGhostNumber) {
       state[startTealGhostIndex] = TealGhostNumber;
-      setTimeout(() => state[destIndex] = triangleNumber, 100)
+      setTimeout(() => state[destIndex] = triangleNumber, 10)
       
     } 
     if (ghostNumber == redGhostNumber) {
       state[startRedGhostIndex] = redGhostNumber;
-      setTimeout(() => state[destIndex] = triangleNumber, 100)
+      setTimeout(() => state[destIndex] = triangleNumber, 10)
     }
     ghostsActivated ? decreaseScore() : ghostsActivated = true
  
