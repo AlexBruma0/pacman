@@ -1,6 +1,6 @@
 const directions = ["up", "down", "left", "right"];
 const directionsy = ["up", "down"];
-const ghostSpeed = 100;
+const ghostSpeed = 300;
 const startRedGhostIndex = 40;
 const startTealGhostIndex = 49;
 const TealGhostNumber = 5;
@@ -20,6 +20,7 @@ const upRightDirections = ["up", "right"]
 const downRightDirections = ["down", "right"]
 const upLeftDirections = ["up", "left"]
 const downLeftDirections = ["down", "left"]
+var overlapFlag = true
 var underRedGhost= deadzoneNumber
 var underGreenGhost= deadzoneNumber
 var ghostsActivated = true

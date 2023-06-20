@@ -10,7 +10,7 @@ const moveGhost = (ghostNumber) => {
     direction = "left";
   }
   if (!direction && ghostNumber == TealGhostNumber) {
-    direction = "right";
+    direction = "up";
   }
   configureDirection(ghostNumber, direction, sourceIndex);
 };
@@ -37,7 +37,10 @@ const configureDirection = (ghostNumber, direction, sourceIndex) => {
   }
 };
 
-const requestGhostStateChange = (sourceIndex, destIndex, ghostNumber) => {
+const requestGhostStateChange = async (sourceIndex, destIndex, ghostNumber) => {
+  if(!overlapFlag){
+    return
+  }
   ghostNumber == redGhostNumber ? direction = directionRedGhost : direction = directionTealGhost
   if (
     (direction === "left" && sourceIndex % numCols == 0) ||
@@ -104,7 +107,7 @@ const requestGhostStateChange = (sourceIndex, destIndex, ghostNumber) => {
       state[startTealGhostIndex] = TealGhostNumber;
       setTimeout(() => state[destIndex] = triangleNumber, 100)
       
-    }
+    } 
     if (ghostNumber == redGhostNumber) {
       state[startRedGhostIndex] = redGhostNumber;
       setTimeout(() => state[destIndex] = triangleNumber, 100)
@@ -112,12 +115,28 @@ const requestGhostStateChange = (sourceIndex, destIndex, ghostNumber) => {
     ghostsActivated ? decreaseScore() : ghostsActivated = true
  
     drawState(state);
-  } else {
+  } else if ((state[destIndex] === TealGhostNumber || state[destIndex] === redGhostNumber) && overlapFlag == true){
+    overlapFlag = false
+    await clearInterval(ghostInterval);
+    state[destIndex] = (ghostNumber == redGhostNumber) ? redGhostNumber : TealGhostNumber
+    state[sourceIndex] = (ghostNumber == redGhostNumber) ? TealGhostNumber : redGhostNumber
+    drawState(state)
+    console.log(ghostNumber)
+    console.log(state)
+    overlapFlag = true
+    ghostInterval = setInterval(ghostsMove, ghostSpeed);
+  }
+  
+  
+  else {
     direction = directions[Math.floor(Math.random() * 4)];
     ghostNumber == redGhostNumber ? directionRedGhost = direction : directionTealGhost = direction
     configureDirection(ghostNumber, direction, sourceIndex);
   }
 };
+const ghostOverlap = async() => {
+ 
+}
 
 const decreaseScore = () => {
   var score = Number(document.querySelector("#score").innerHTML) - 500;
